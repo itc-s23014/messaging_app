@@ -1,10 +1,9 @@
-'use client'
+'use client';
 
 import { useState } from "react";
 import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { app } from '../../../firebase_Config';
-import {router} from "next/client";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const auth = getAuth(app);
 
@@ -19,11 +18,15 @@ const LoginPage = () => {
         try {
             // FirebaseのsignInWithEmailAndPasswordメソッドを使用してログイン
             await signInWithEmailAndPassword(auth, email, password);
-             router.push('/pages'); // ログイン成功後、ダッシュボードページにリダイレクト
+            router.push('/pages'); // ログイン成功後、ダッシュボードページにリダイレクト
             console.log('ok');
         } catch (error) {
             console.log('Login Error', error);
         }
+    }
+
+    const handleSignUp = () => {
+        router.push('/signup');
     }
 
     return (
@@ -38,7 +41,7 @@ const LoginPage = () => {
         }}>
             <div style={{
                 width: '498px',
-                height: '275px',
+                height: '320px', // 高さを少し増やす
                 backgroundColor: 'white',
                 display: 'flex',
                 flexDirection: 'column',
@@ -104,22 +107,42 @@ const LoginPage = () => {
                             />
                         </label>
                     </div>
-                    <button type="submit" style={{
-                        width: '100%',
-                        maxWidth: '150px',
-                        height: '40px',
-                        backgroundColor: '#f36d6d',
-                        border: 'none',
-                        borderRadius: '20px',
-                        color: 'white',
-                        fontSize: '1rem',
-                        cursor: 'pointer',
+                    <div style={{
                         display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
+                        gap: '10px', // ボタンの間にスペースを追加
+                        justifyContent: 'center' // ボタンを中央揃えにする
                     }}>
-                        ログイン
-                    </button>
+                        <button type="submit" style={{
+                            width: '100px',
+                            height: '40px',
+                            backgroundColor: '#f36d6d',
+                            border: 'none',
+                            borderRadius: '20px',
+                            color: 'white',
+                            fontSize: '1rem',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                            ログイン
+                        </button>
+                        <button type="button" onClick={handleSignUp} style={{
+                            width: '100px',
+                            height: '40px',
+                            backgroundColor: '#f36d6d',
+                            border: 'none',
+                            borderRadius: '20px',
+                            color: 'white',
+                            fontSize: '1rem',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                            新規登録
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

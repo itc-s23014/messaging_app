@@ -28,8 +28,7 @@ const AddUserPage = () => {
         <div style={{
             width: '100vw',
             height: '100vh',
-            backgroundColor: '#f0f0f0', // 背景色を
-            // 少しグレーに
+            backgroundColor: '#f0f0f0',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
