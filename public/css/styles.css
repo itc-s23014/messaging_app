@@ -1,0 +1,137 @@
+
+body {
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+.header {
+    background-color: #222a41;
+    color: white;
+    height: 75px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #333;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    margin: 10px 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.sent {
+    background-color: #007bff;
+    color: white;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 15px;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.received {
+    background-color: #ffffff;
+    color: black;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 15px;
+    align-self: flex-start;
+    margin-right: auto; /* 右端から左に寄せる */
+}
+
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+.send-message-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.message-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin-right: 10px;
+    font-size: 16px;
+    color: black;
+}
+
+.send-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.send-button:hover {
+    background-color: #0056b3;
+}
+
+
+.messages {
+    padding: 80px 10px 60px;
+    overflow-y: auto;
+    height: calc(100vh - 75px - 50px);
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 775px) {
+    .message {
+        padding: 8px 12px;
+        margin: 8px 12px;
+    }
+    .message-input {
+        font-size: 14px;
+    }
+    .send-button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 500px) {
+    .message {
+        padding: 6px 10px;
+        margin: 6px 10px;
+    }
+    .message-input {
+        font-size: 12px;
+    }
+    .send-button {
+        font-size: 12px;
+    }
+}
