@@ -7,12 +7,13 @@ import SendMessage from '../SendMessage/page'; // Adjust the path according to y
 import '../../../public/css/styles.css';
 
 const Chat = () => {
-    const [messages, setMessages] = useState([]);
-    const [currentUserUid, setCurrentUserUid] = useState(null);
+    const [messages, setMessages] = useState([]);  //messages格納場所
+    const [currentUserUid, setCurrentUserUid] = useState(null);　　//
 
+                                                                                        //useEffect関数はデータの取得とリアルタイム更新する関数
     useEffect(() => {
-        const q = query(collection(db, "messages"), orderBy("createdAt")); //qにmessagesにアクセスしてその値をorderbyで時間順にソートした
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const q = query(collection(db, "messages"), orderBy("createdAt")); //qにmessagesにアクセスしてその値をorderbyのcreatedAtで時間順にソートした
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {   　//ソートしたものにリアルタイムリスナーを設定
             const messagesList = querySnapshot.docs.map((doc) => ({
                 id: doc.id,
                 ...doc.data()
@@ -20,8 +21,8 @@ const Chat = () => {
             setMessages(messagesList); //ここでメッセージリスト格納をsetmessagesに格納
         });
 
-        if (auth.currentUser) {
-            setCurrentUserUid(auth.currentUser.uid);
+        if (auth.currentUser) {    //ユーザーがログインしているか確認
+            setCurrentUserUid(auth.currentUser.uid);　　　　//trueの場合seturrentUseruidにidを格納
         }
 
         return () => unsubscribe();
